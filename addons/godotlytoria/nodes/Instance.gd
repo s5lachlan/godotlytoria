@@ -5,7 +5,6 @@
 ## events and functions Instance has.
 class_name PolyInstance 
 extends Node3D
-#var __properties
 
 ## The name given to the object in Polytoria
 @export var Name: String = "Instance"

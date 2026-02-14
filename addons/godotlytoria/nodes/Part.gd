@@ -51,6 +51,8 @@ func _enter_tree() -> void:
 	for n in get_children():
 		n.queue_free()
 	mesh_instance.mesh = meshbox
+	if Shape == Polytoria.PartShape.Ball:
+		mesh_instance.mesh = SphereMesh.new()
 	mesh_instance.name = "GeneratedMesh"
 	add_child(mesh_instance)
 	if mesh_instance.mesh.material == null:
