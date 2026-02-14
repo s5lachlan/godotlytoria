@@ -9,15 +9,8 @@ extends Node3D
 
 ## The name given to the object in Polytoria
 @export var Name: String = "Instance"
+## Seems to not be required by editor.
 #@export var ClassName = "Instance"
-
-signal ChildAdded(child)
-signal ChildRemoved(child)
-signal Clicked(player)
-signal MouseEnter
-signal MouseExit
-signal Touched(otherPart)
-signal TouchEnded(otherPart)
 
 func get_properties() -> Array[Dictionary]:
 	return get_script().get_script_property_list()

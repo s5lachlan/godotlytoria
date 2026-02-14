@@ -3,8 +3,6 @@
 extends PolyInstance
 class_name PolyDynamicInstance
 
-## The forward vector of this DynamicInstance
-var Forward : Vector3
 @export_group("Local")
 ## Specifies the position relative to the parent of an instance.
 @export var LocalPosition : Vector3 = Vector3(0, 10, 0):
@@ -23,8 +21,6 @@ var Forward : Vector3
 @export var Position : Vector3 :
 	get = _get_position,
 	set = _set_position
-## The right vector of this DynamicInstance
-var Right : Vector3
 ## Specifies the rotation of an instance.
 #@export var Rotation : Vector3 = Vector3(0, 0, 0) :
 	#get = _get_rotation,
@@ -33,11 +29,6 @@ var Right : Vector3
 @export var Size : Vector3 = Vector3(1, 1, 1) :
 	get = _get_my_size,
 	set = _set_my_size
-var Up : Vector3
-## The Y axis of this DynamicInstance
-var _Quaternion : Quaternion = Quaternion.from_euler(Vector3.ZERO)
-## The quaternion of this DynamicInstance
-var LocalQuaternion : Quaternion = Quaternion.from_euler(Vector3.ZERO)
 
 func _set_position(value):
 	if !is_inside_tree(): return

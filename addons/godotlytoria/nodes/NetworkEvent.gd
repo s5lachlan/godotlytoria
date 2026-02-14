@@ -3,5 +3,4 @@
 extends PolyInstance
 class_name PolyNetworkEvent
 
-signal InvokedClient
-signal InvokedServer
+# Does nothing
