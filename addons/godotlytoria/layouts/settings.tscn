@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c83xusdhlplvq"]
+
+[node name="Polytoria" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="LabelPolyClientLoc" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Path required to run the Polytoria Client to test games."
+mouse_filter = 0
+text = "Polytoria Client Location "
+
+[node name="PolyClientLocation" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "~/.var/app/com.polytoria.launcher/config/Polytoria/Client/1.4.152/Polytoria Client.x86_64"
+
+[node name="LabelPolyCreatorLoc" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Path required to run the Polytoria Creator to edit games, in case a feature is currently unsupported."
+mouse_filter = 0
+text = "Polytoria Creator Location "
+
+[node name="PolyCreatorLocation" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "~/.var/app/com.polytoria.launcher/config/Polytoria/Creator/1.4.152/Polytoria Creator.x86_64"

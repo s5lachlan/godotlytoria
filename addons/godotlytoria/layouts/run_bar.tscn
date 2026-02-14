@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbiyg0k5et1dy"]
+
+[ext_resource type="Texture2D" uid="uid://i4er772kx3fj" path="res://addons/godotlytoria/textures/creator.png" id="1_wti8r"]
+[ext_resource type="Texture2D" uid="uid://dwyw0cfepngvn" path="res://addons/godotlytoria/textures/client.png" id="1_y2p7r"]
+
+[node name="RunBar" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Client" type="Button" parent="."]
+layout_mode = 2
+tooltip_text = "Test your Polytoria game using the Polytoria Client."
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("1_y2p7r")
+flat = true
+icon_alignment = 2
+
+[node name="Creator" type="Button" parent="."]
+layout_mode = 2
+tooltip_text = "Open the Polytoria Creator."
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("1_wti8r")
+flat = true
+icon_alignment = 1
+
+[node name="OpenPolyFile" type="FileDialog" parent="."]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+size = Vector2i(988, 545)
+ok_button_text = "Run FIle"
+dialog_hide_on_ok = true
+file_mode = 0
+filters = PackedStringArray("*.poly;Polytoria")
