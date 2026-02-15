@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cint80ujmkqix"]
+
+[node name="Toolbox" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SearchRequest" type="HTTPRequest" parent="."]
+
+[node name="Search" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Search..."
+clear_button_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+text = "The toolbox is currently disabled as Polytoria blocks my requests to access their API, sadly."
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+max_columns = 2
+
+[node name="PageContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PageBack" type="Button" parent="PageContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "<"
+
+[node name="PageLabel" type="RichTextLabel" parent="PageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]Page 1"
+
+[node name="PageAdvance" type="Button" parent="PageContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = ">"

@@ -11,7 +11,10 @@ The current Polytoria Creator is lacking in features, has a very displeasing UI,
 ## Usage
 [Download Godotlytoria](https://github.com/s5lachlan/godotlytoria/archive/refs/heads/main.zip) and open it as a Godot Project.
 ### Opening a .poly file
-Select **Scene**, then *Open Scene*, change types from recognized to *All types* and then select a .poly file. It will then load. Depending on how large the file is, it may take a while to load. You can also double click the file from the FileSystem dock but currently doing so will cause the scene to load twice, which is inefficient.
+There are a few ways of opening .poly files
+- Select **Scene**, then *Open Scene*, then select your .poly file. 
+- Double click the .poly file from the filesystem dock.
+Depending on how large the file is, it may take a while to load. 
 ### Creating a .poly file
 Create a new scene in Godot and set the root of the scene to "PolyGame", it will then generate you a basic template place. You may then save the scene as a .poly file.
 ### Running a .poly file
@@ -23,14 +26,31 @@ LuaLS and .luarc.json are included in this repo, open am external editor for cod
 - [x] Ability to open the client and creator from Godot
 - [x] Ability to load .poly files
 - [x] Ability to save .poly files 
+- [x] Ability to load .ptmd model files
+- [ ] Ability to save models as .ptmd model files
 - [x] Write Lua externally and connect to scripts via a file path.
+- [ ] Ability to anchor-scale 3D parts in one direction on one axis, as you would in the editor.
+- [ ] Brick materials and shapes visible in editor
+- [ ] NPC model visible in editor
+- [ ] Custom tools to make life easier, e.g a Tool Creator, templates for things
 - [ ] Ability to code in GDScript and convert it to Lua 
+- [ ] Implement Toolbox
+- [ ] Implement fetching Polytoria asset IDs
 
 Likely to not support the following (unless I figure the API out)
-
-- Toolbox
 - Publishing directly to Polytoria
-- Viewable models, assets, sounds and anything that requires fetching from Polytoria.
+
+### API stuff I found
+Calling them doesnt work due to 403 though. Damn.
+
+- Store Listings: https://api.polytoria.com/v1/store/ID
+- Meshes: https://api.polytoria.com/v1/assets/serve-mesh/ID
+- Decals: https://api.polytoria.com/v1/assets/serve/ID/asset
+- Audio: https://api.polytoria.com/v1/assets/serve-audio/ID
+- Users: https://api.polytoria.com/v1/users/ID
+- Find user: https://api.polytoria.com/v1/users/find?username=USERNAME
+- Toolbox: https://api.polytoria.com/v1/models/toolbox?page=PAGE&q=SEARCHQUERY&cat=CATEGORY
+- Models: https://api.polytoria.com/v1/models/get-model?id=ID
 
 ## Credits
 GodotXML by elenakrittik. LuaLS files from GoldenretriverYT.

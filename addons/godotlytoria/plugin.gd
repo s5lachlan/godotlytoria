@@ -7,6 +7,7 @@ var pluginEnabled = false
 var scripts = {
 	"Settings": preload("res://addons/godotlytoria/scripts/ui_settings.gd").new(),
 	"RunBar": preload("res://addons/godotlytoria/scripts/ui_run_bar.gd").new(),
+	"Toolbox": preload("res://addons/godotlytoria/scripts/ui_toolbox.gd").new(),
 }
 # Singletons and their paths
 var singletons = {

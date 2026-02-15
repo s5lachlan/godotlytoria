@@ -3,6 +3,8 @@
 extends PolyInstance
 class_name PolyDynamicInstance
 
+# Polytoria scaling is position -= (scale - value) * 0.5
+
 @export_group("Local")
 ## Specifies the position relative to the parent of an instance.
 @export var LocalPosition : Vector3 = Vector3(0, 10, 0):
@@ -78,7 +80,7 @@ func _get_position():
 func _get_my_size():
 	if !is_inside_tree(): return
 	#var unity_value = Vector3(scale.x, scale.y, scale.z)
-	global_basis.get_scale()
+	#global_basis.get_scale()
 	var unity_value = Vector3(global_basis.get_scale().x, global_basis.get_scale().y, global_basis.get_scale().z)
 	return unity_value
 	
