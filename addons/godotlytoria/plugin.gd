@@ -27,6 +27,7 @@ func _enable_plugin() -> void:
 			add_autoload_singleton(singleton,singletons[singleton])
 		for script in scripts.keys():
 			add_child(scripts[script])
+		partGizmo.undo_redo = get_undo_redo()
 		add_node_3d_gizmo_plugin(partGizmo)
 		pluginEnabled = true
 
