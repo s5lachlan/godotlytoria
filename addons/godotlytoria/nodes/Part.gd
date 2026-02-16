@@ -52,6 +52,12 @@ var material = StandardMaterial3D.new()
 ## Specifies whether the part can be used as a spawn location or not.
 @export var IsSpawn = false
 
+@export var extents : Vector3 = Vector3(1,1,1) : set = _set_extents
+
+func _set_extents(new):
+	extents = new
+	update_gizmos()
+
 func _enter_tree() -> void:
 	for n in get_children():
 		n.queue_free()

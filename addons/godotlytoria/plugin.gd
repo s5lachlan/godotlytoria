@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 var pluginEnabled = false
-
+var partGizmo = preload("res://addons/godotlytoria/scripts/part_gizmo.gd").new()
 # Names of scripts and their locations
 var scripts = {
 	"Settings": preload("res://addons/godotlytoria/scripts/ui_settings.gd").new(),
@@ -27,6 +27,7 @@ func _enable_plugin() -> void:
 			add_autoload_singleton(singleton,singletons[singleton])
 		for script in scripts.keys():
 			add_child(scripts[script])
+		add_node_3d_gizmo_plugin(partGizmo)
 		pluginEnabled = true
 
 # Disables singletons, scripts and sub-plugins on disable or shutdown.
@@ -35,5 +36,6 @@ func _disable_plugin() -> void:
 		remove_autoload_singleton(singleton)
 	for script in scripts.keys():
 		remove_child(scripts[script])
+	remove_node_3d_gizmo_plugin(partGizmo)
 	pluginEnabled = false
 	print("[Polytoria] Plugin stopped")
