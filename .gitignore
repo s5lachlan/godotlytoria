@@ -3,6 +3,7 @@
 /android/
 places/
 scripts/
+!/addons/godotlytoria/scripts
 project.godot
 models
 *~
