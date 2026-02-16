@@ -29,7 +29,7 @@ LuaLS and .luarc.json are included in this repo, open am external editor for cod
 - [x] Ability to load .ptmd model files
 - [ ] Ability to save models as .ptmd model files
 - [x] Write Lua externally and connect to scripts via a file path.
-- [ ] Ability to anchor-scale 3D parts in one direction on one axis, as you would in the editor.
+- [x] Ability to anchor-scale 3D parts.
 - [ ] Brick materials and shapes visible in editor
 - [ ] NPC model visible in editor
 - [ ] Custom tools to make life easier, e.g a Tool Creator, templates for things
