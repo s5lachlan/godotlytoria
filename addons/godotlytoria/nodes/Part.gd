@@ -73,6 +73,7 @@ func set_material():
 		return
 	if mesh_instance.mesh.material == null:
 		material = StandardMaterial3D.new()
+		material.roughness = 1.0
 		material.albedo_color = _Color
 		mesh_instance.mesh.material = material
 	match _Material:

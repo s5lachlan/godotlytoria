@@ -1,7 +1,7 @@
 # Godotlytoria
 <img src="./icon.png" alt="" width="200px"/>
 
-Godotlytoria is a [Polytoria](https://polytoria.com) Place Creator and Editor in the form of a Godot plugin for the Godot Editor. It allows you to make and edit Polytoria games using Godot. 
+Godotlytoria is a [Polytoria](https://polytoria.com) Place Creator and Editor in the form of a Godot plugin for the Godot Editor. It allows you to make and edit Polytoria games using Godot. You can even use it in the browser.
 
 ![](./screenshots/screenshot1.png)
 
@@ -10,6 +10,8 @@ The current Polytoria Creator is lacking in features, has a very displeasing UI,
 
 ## Usage
 [Download Godotlytoria](https://github.com/s5lachlan/godotlytoria/archive/refs/heads/main.zip) and open it as a Godot Project.
+### Running Godotlytoria in your Web Browser
+After downloading Godotlytoria, open it in the [Godot Web Editor](https://editor.godotengine.org/releases/4.5.stable/), create a .poly file and then click Project -> Tools -> Download Project Source to get your poly file. Then you can upload it to Polytoria and test it.
 ### Opening a .poly file
 There are a few ways of opening .poly files
 - Select **Scene**, then *Open Scene*, then select your .poly file. 
@@ -31,6 +33,8 @@ LuaLS and .luarc.json are included in this repo, open am external editor for cod
 - [x] Write Lua externally and connect to scripts via a file path.
 - [x] Ability to anchor-scale 3D parts.
 - [ ] Brick materials and shapes visible in editor
+- [ ] Bundled in template places 
+- [ ] Ability to paint objects with colours and materials by clicking on them 
 - [ ] NPC model visible in editor
 - [ ] Custom tools to make life easier, e.g a Tool Creator, templates for things
 - [ ] Ability to code in GDScript and convert it to Lua 

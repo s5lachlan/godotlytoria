@@ -1,6 +1,11 @@
 @tool
 @icon("res://addons/godotlytoria/textures/Camera.svg")
 extends PolyDynamicInstance
+## Camera is a class that represents the local player's camera.
+##
+##[color=khaki]This object cannot be created by scripts using Instance.New().[br]
+##[color=medium_purple]This object is automatically created by Polytoria. Additionally, scripts cannot change its parent.[br]
+##[/color]
 class_name PolyCamera
 
 ## Determines the distance between the camera and the player when the camera is in FollowPlayer mode.
@@ -41,4 +46,5 @@ class_name PolyCamera
 @export var VerticalSpeed: float 
 ## Determines whether or not the camera should clip through walls.
 @export var ClipThroughWalls: bool 
+## Determines the multiplier of the camera sensitivity.
 @export var SensitivityMultiplier: float

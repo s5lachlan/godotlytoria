@@ -25,14 +25,16 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 			if state.get_node_property_name(node,i) == "script":
 				return state.get_node_property_value(node,i)
 		return null
+		
 	var get_node_properties = func(node):
 		var propertyList = get_default_values(get_node_script.call(node))
 		for i in state.get_node_property_count(node):
 			var name = state.get_node_property_name(node,i).trim_prefix("_")
 			var value = state.get_node_property_value(node,i)
-			if name == name.to_pascal_case():
+			if is_public(name):
 				propertyList[name] = value
 		return propertyList
+		
 	var get_node_depth = func(node, amount):
 		return str(state.get_node_path(clamp(node + amount,0,state.get_node_count() - 1))).count("/")
 		
@@ -52,6 +54,7 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 		#var descendingTree = (next_node_depth > current_node_depth)
 		if escaped: nodexml += "\n</Item>".repeat(last_node_depth - current_node_depth)
 		nodexml += '\n<Item class="%s">\n' % [node_class]
+		
 		#print("Node depth: ", current_node_depth)
 		nodexml += xml_properties(nodeProperties).indent("  ")
 		if !hasChildren:
@@ -80,13 +83,16 @@ func get_default_values(script: GDScript):
 	for i in property_list:
 		if i.usage != PROPERTY_USAGE_SCRIPT_VARIABLE + PROPERTY_USAGE_STORAGE + PROPERTY_USAGE_EDITOR:
 			continue
-		if i.name != i.name.to_pascal_case():
+		if !is_public(i.name):
 			continue
 		if i.name.contains(".gd"):
 			continue
 		else:
 			list[i.name.trim_prefix("_")] = script.get_property_default_value(i.name.trim_prefix("_"))
 	return list
+	
+func is_public(string: String):
+	return string[0] == string[0].to_upper()
 	
 func xml_properties(properties):
 	var string = ""
@@ -100,6 +106,7 @@ func xml_properties(properties):
 			TYPE_BOOL: function = xml_boolean
 			TYPE_COLOR: function = xml_color
 			TYPE_VECTOR3: function = xml_vector3
+			_: print("Error, cannot find variant: ",properties)
 		string += (function.call(i,properties[i]) + "\n").indent("  ")
 	return "<Properties>\n%s</Properties>" % [string]
 	

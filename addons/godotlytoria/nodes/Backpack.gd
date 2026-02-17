@@ -1,6 +1,9 @@
 @tool
 @icon("res://addons/godotlytoria/textures/Backpack.svg")
 extends PolyInstance
-class_name PolyBackpack
+## Backpack is a child of player used for storing tools.
+##
+##[color=khaki]This object cannot be created by scripts using Instance.New().[br]
+##In Godotlytoria, this node does nothing.
 
-# Yeah this literally just does nothing
+class_name PolyBackpack
