@@ -4,6 +4,7 @@ extends PolyDynamicInstance
 ## Sounds are objects that can be placed in the world and emit audio.
 class_name PolySound
 
+var sprite3D: Sprite3D = Sprite3D.new()
 var StreamPlayer: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
 
 ## The event that is fired when the sound is loaded from the server.
@@ -80,11 +81,18 @@ var Length: float
 		MaxDistance = value
 		
 func _enter_tree() -> void:
+	if sprite3D == null:
+		sprite3D = Sprite3D.new()
 	if StreamPlayer == null:
 		StreamPlayer = AudioStreamPlayer3D.new()
 	if SoundPath != "":
 		StreamPlayer.stream = load(SoundPath)
+	sprite3D.pixel_size = 0.05
+	sprite3D.texture = load("res://addons/godotlytoria/textures/Sound.svg")
+	sprite3D.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(StreamPlayer)
+	add_child(sprite3D)
+	sprite3D.owner = self
 	StreamPlayer.volume_db = Volume
 	StreamPlayer.playing = Playing
 	StreamPlayer.pitch_scale = Pitch
@@ -92,4 +100,5 @@ func _enter_tree() -> void:
 	StreamPlayer.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED if !PlayInWorld else AudioStreamPlayer3D.ATTENUATION_INVERSE_DISTANCE
 	
 func _exit_tree() -> void:
+	remove_child(sprite3D)
 	remove_child(StreamPlayer)

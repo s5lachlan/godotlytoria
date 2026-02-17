@@ -5,21 +5,29 @@
 class_name PolyFileSaver
 extends ResourceFormatSaver
 
+# Only handle PackedScene resources.
 func _recognize(resource: Resource) -> bool:
-	# Only handle PackedScene resources.
 	return resource is PackedScene
 
+# Recognize .poly extension only. Plan to add .ptmd support later.
 func _get_recognized_extensions(resource: Resource) -> PackedStringArray:
 	return PackedStringArray(["poly"])
 
 func _save(resource: Resource, path: String, flags: int) -> Error:
-	# Open file path, read scene tree and save scene tree as xml
+	# Set initial variables.
 	var scene: PackedScene = resource as PackedScene
+	# Get scene as scene state without instantiating it.
+	# Scene state is a huge list of nodes, no children or parent information, just one after another.
 	var state: SceneState = scene.get_state()
+	# Current XML Item
 	var xml = ""
+	# Final file wrapper
 	var final_file = """<?xml version="1.0" encoding="UTF-8"?>
 <game version="%s">%s
 </game>"""
+
+	# Lambda functions that I felt like would work best inside this function
+
 	var get_node_script = func(node):
 		for i in state.get_node_property_count(node):
 			if state.get_node_property_name(node,i) == "script":
@@ -39,9 +47,10 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 		return str(state.get_node_path(clamp(node + amount,0,state.get_node_count() - 1))).count("/")
 		
 	for node in state.get_node_count():
-		# Skip game
+		# Skip game / root node and ignore nodes that don't have scripts.
 		if node == 0 || get_node_script.call(node) == null:
 			continue
+			
 		var nodexml = ""
 		var last_node_depth = get_node_depth.call(node,-1)
 		var current_node_depth = get_node_depth.call(node,0)
@@ -51,11 +60,10 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 		var hasChildren = (next_node_depth != current_node_depth)
 		var ascendingTree = (next_node_depth < current_node_depth)
 		var escaped = (last_node_depth > current_node_depth)
-		#var descendingTree = (next_node_depth > current_node_depth)
+
 		if escaped: nodexml += "\n</Item>".repeat(last_node_depth - current_node_depth)
 		nodexml += '\n<Item class="%s">\n' % [node_class]
 		
-		#print("Node depth: ", current_node_depth)
 		nodexml += xml_properties(nodeProperties).indent("  ")
 		if !hasChildren:
 			nodexml += "\n</Item>"
@@ -64,6 +72,7 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 		if current_node_depth - 1 > 0:
 			nodexml = nodexml.indent("  ".repeat(current_node_depth))
 		xml += nodexml
+		
 	final_file = final_file % [str(Polytoria.ClientVersion),xml.indent("  ")]
 	var file = FileAccess.open(path,FileAccess.WRITE)
 	print("[Polytoria] Saving to ", path)
@@ -91,8 +100,12 @@ func get_default_values(script: GDScript):
 			list[i.name.trim_prefix("_")] = script.get_property_default_value(i.name.trim_prefix("_"))
 	return list
 	
+# Returns true if property begins with a capital letter.
+	
 func is_public(string: String):
 	return string[0] == string[0].to_upper()
+	
+# XML functions
 	
 func xml_properties(properties):
 	var string = ""
@@ -106,7 +119,13 @@ func xml_properties(properties):
 			TYPE_BOOL: function = xml_boolean
 			TYPE_COLOR: function = xml_color
 			TYPE_VECTOR3: function = xml_vector3
-			_: print("Error, cannot find variant: ",properties)
+			_: 
+				# Stupid hack because the default value of colour is null for some reason
+				match i:
+					"Color": 
+						properties[i] = Color.WHITE
+						function = xml_color
+					_: print("Error, cannot find variant: ",properties)
 		string += (function.call(i,properties[i]) + "\n").indent("  ")
 	return "<Properties>\n%s</Properties>" % [string]
 	

@@ -40,6 +40,27 @@ LuaLS and .luarc.json are included in this repo, open am external editor for cod
 - [ ] Ability to code in GDScript and convert it to Lua 
 - [ ] Implement Toolbox
 - [ ] Implement fetching Polytoria asset IDs
+TODO:
+
+- MeshPart [Not added yet]
+- NPC [Not added yet]
+- Text3D [Not added yet]
+- Decal [Not added yet]
+- GradientSky [Not added yet]
+- ImageSky [Not added yet]
+- Particles [Not added yet]
+- PointLight [Not added yet]
+- SpotLight [Not added yet]
+- GUI [Not added yet]
+- UIButton [Not added yet]
+- UIField [Not added yet]
+- UIHVLayout [Not added yet]
+- UIHorizontalLayout [Not added yet]
+- UIImage [Not added yet]
+- UILabel [Not added yet]
+- UITextInput [Not added yet]
+- UIVerticalLayout [Not added yet]
+- UIView [Not added yet]
 
 Likely to not support the following (unless I figure the API out)
 - Publishing directly to Polytoria
