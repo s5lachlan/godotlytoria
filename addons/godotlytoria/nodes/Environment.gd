@@ -8,7 +8,6 @@ extends PolyInstance
 ##[/color]
 class_name PolyEnvironment
 
-# TODO: Add all the skyboxes 
 var worldEnvironment: WorldEnvironment = WorldEnvironment.new()
 
 @export var AutoGenerateNavMesh: bool
@@ -18,7 +17,10 @@ var worldEnvironment: WorldEnvironment = WorldEnvironment.new()
 @export var FogEndDistance: float
 @export var Gravity: Vector3 = Vector3(0,-75,0)
 @export var PartDestroyHeight: float
-@export var Skybox: Polytoria.SkyboxPreset
+@export var Skybox: Polytoria.SkyboxPreset: 
+	set(value):
+		Skybox = value
+		worldEnvironment.environment = Polytoria.get_skybox(Skybox)
 
 ## Creates a deadly explosion killing players and applying force to parts at the given position.
 ## Example:
@@ -30,7 +32,7 @@ func OverlapSphere() -> Array[PolyInstance]: return []
 func _enter_tree() -> void:
 	if worldEnvironment == null:
 		worldEnvironment = WorldEnvironment.new()
-	worldEnvironment.environment = load("res://addons/godotlytoria/skyboxes/day1.tres")
+	worldEnvironment.environment = Polytoria.get_skybox(Skybox)
 	add_child(worldEnvironment)
 
 func _exit_tree() -> void:

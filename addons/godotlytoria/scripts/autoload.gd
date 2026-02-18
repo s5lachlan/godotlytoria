@@ -13,6 +13,7 @@ const DefaultWindowsPolyCreatorLocation = "%appdata%\\Polytoria\\Creator\\" + Cr
 const FontPath = "res://addons/godotlytoria/fonts/"
 const MaterialPath = "res://addons/godotlytoria/textures/materials/"
 const ModelPath = "res://addons/godotlytoria/models/"
+const SkyboxPath = "res://addons/godotlytoria/skyboxes/"
 
 func APIGetMesh(id: String) -> String:
 	return "https://api.polytoria.com/v1/assets/serve-mesh/%s" % [id]
@@ -161,6 +162,9 @@ enum SkyboxPreset {
 	Sunset4,  ## A dusk red sky with clouds
 	Sunset5,  ## A dusk red sky with clouds
 }
+
+func get_skybox(skybox: SkyboxPreset):
+	return load(SkyboxPath + SkyboxPreset.keys()[skybox].to_lower() + ".tres")
 
 enum TextFontPreset {
 	SourceSans,
