@@ -23,28 +23,30 @@ Create a new scene in Godot and set the root of the scene to "PolyGame", it will
 Press the red Polytoria button in the right hand corner of your screen. It will prompt you for a poly file to load, select it and it will run the client in solo mode with your .poly file. If nothing happens, check the settings to ensure that you have set the location of your Polytoria binaries, so Godotlytoria can run Polytoria.
 ### Scripting
 LuaLS and .luarc.json are included in this repo, open am external editor for coding in Lua, such as Zed, and set the Script Path of scripts to your lua files. Godotlytoria will set the Source of the script objects to the contents of the file when the place is saved.
+### Sounds
+Sound files have a download button and a path argument. Insert an ID, click download to download it, it will open up a web browser, click on the result mp3 and save it to your project, then set the path location and you can now listen to the sound in the editor.
 
 ## Roadmap
 - [x] Ability to open the client and creator from Godot
-- [x] Ability to load .poly files
-- [x] Ability to save .poly files 
+- [x] Ability to load and save .poly files
 - [x] Ability to load .ptmd model files
 - [ ] Ability to save models as .ptmd model files
-- [x] Write Lua externally and connect to scripts via a file path.
 - [x] Ability to anchor-scale 3D parts.
-- [ ] Brick materials and shapes visible in editor
+- [x] Brick materials and shapes visible in editor
+- [ ] Ability to code in Lua using the editor
+- [ ] Ability to code in GDScript and convert it to Lua 
+- [x] Write Lua externally and connect to scripts via a file path.
 - [ ] Bundled in template places 
 - [ ] Ability to paint objects with colours and materials by clicking on them 
 - [ ] NPC model visible in editor
 - [ ] Custom tools to make life easier, e.g a Tool Creator, templates for things
-- [ ] Ability to code in GDScript and convert it to Lua 
 - [ ] Implement Toolbox
 - [ ] Implement fetching Polytoria asset IDs
+
 TODO:
 
 - MeshPart [Not added yet]
 - NPC [Not added yet]
-- Text3D [Not added yet]
 - Decal [Not added yet]
 - GradientSky [Not added yet]
 - ImageSky [Not added yet]
@@ -62,8 +64,9 @@ TODO:
 - UIVerticalLayout [Not added yet]
 - UIView [Not added yet]
 
-Likely to not support the following (unless I figure the API out)
+Likely to not support the following
 - Publishing directly to Polytoria
+- Utilizing any aspect of the API due to Cloudflare issues
 
 ### API stuff I found
 Calling them doesnt work due to 403 though. Damn.
@@ -76,6 +79,9 @@ Calling them doesnt work due to 403 though. Damn.
 - Find user: https://api.polytoria.com/v1/users/find?username=USERNAME
 - Toolbox: https://api.polytoria.com/v1/models/toolbox?page=PAGE&q=SEARCHQUERY&cat=CATEGORY
 - Models: https://api.polytoria.com/v1/models/get-model?id=ID
+
+## Contributing
+Please feel free to report any bugs you've found to me either here on GitHub or on Polytoria. Also feel free to make feature and pull requests to help make Godotlytoria even better and provide extended functionality.
 
 ## Credits
 GodotXML by elenakrittik. LuaLS files from GoldenretriverYT.
