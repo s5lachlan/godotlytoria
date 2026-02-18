@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Lighting.svg")
+@icon("res://addons/godotlytoria/textures/icons/Lighting.svg")
 extends PolyInstance
 class_name PolyLighting
 
@@ -10,8 +10,8 @@ class_name PolyLighting
 ## Determines the source of the ambient light
 @export var AmbientSource: Polytoria.AmbientSource
 ## Determines the brightness of the sun
-@export var SunBrightness: float
+#@export var SunBrightness: float
 ## Determines the color of the sun. This affects the color of the ambient lighting in the environment.
-@export var SunColor: Color
+#@export var SunColor: Color
 ## Determines whether or not shadows are enabled
-@export var Shadows: bool
+#@export var Shadows: bool

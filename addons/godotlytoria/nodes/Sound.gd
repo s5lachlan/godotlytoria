@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Sound.svg")
+@icon("res://addons/godotlytoria/textures/icons/Sound.svg")
 extends PolyDynamicInstance
 ## Sounds are objects that can be placed in the world and emit audio.
 class_name PolySound
@@ -88,7 +88,7 @@ func _enter_tree() -> void:
 	if SoundPath != "":
 		StreamPlayer.stream = load(SoundPath)
 	sprite3D.pixel_size = 0.05
-	sprite3D.texture = load("res://addons/godotlytoria/textures/Sound.svg")
+	sprite3D.texture = load("res://addons/godotlytoria/textures/icons/Sound.svg")
 	sprite3D.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(StreamPlayer)
 	add_child(sprite3D)

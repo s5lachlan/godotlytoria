@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/ScriptService.svg")
+@icon("res://addons/godotlytoria/textures/icons/ScriptService.svg")
 extends PolyInstance
 class_name PolyScriptService
 

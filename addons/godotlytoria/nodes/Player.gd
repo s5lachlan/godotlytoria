@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Player.svg")
+@icon("res://addons/godotlytoria/textures/icons/Player.svg")
 extends PolyDynamicInstance
 class_name PolyPlayer
 

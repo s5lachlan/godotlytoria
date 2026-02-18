@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Part.svg")
+@icon("res://addons/godotlytoria/textures/icons/Part.svg")
 extends PolyDynamicInstance
 class_name PolyPart
 
@@ -11,6 +11,7 @@ var material = StandardMaterial3D.new()
 	set(value):
 		_Color = value
 		material.albedo_color = value
+		mesh_instance.transparency = 1 - value.a
 	get():
 		return _Color
 ## Specifies the material of the part.
@@ -52,12 +53,6 @@ var material = StandardMaterial3D.new()
 ## Specifies whether the part can be used as a spawn location or not.
 @export var IsSpawn = false
 
-@export var extents : Vector3 = Vector3(1,1,1) : set = _set_extents
-
-func _set_extents(new):
-	extents = new
-	update_gizmos()
-
 func _enter_tree() -> void:
 	for n in get_children():
 		n.queue_free()
@@ -71,48 +66,19 @@ func _enter_tree() -> void:
 func set_material():
 	if mesh_instance.mesh == null:
 		return
-	if mesh_instance.mesh.material == null:
+	if mesh_instance.material_override == null:
 		material = StandardMaterial3D.new()
-		material.roughness = 1.0
-		material.albedo_color = _Color
-		mesh_instance.mesh.material = material
-	match _Material:
-		Polytoria.PartMaterial.Wood:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/wood.png")
-		Polytoria.PartMaterial.Snow:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/snow.png")
-		Polytoria.PartMaterial.Fabric:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/fabric.png")
-		Polytoria.PartMaterial.RustyIron:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/rustyiron.png")
-		Polytoria.PartMaterial.Concrete:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/concrete.png")
-		Polytoria.PartMaterial.Grass:
-			material.albedo_texture = load("res://addons/godotlytoria/textures/grass.png")
-		_:
-			material.albedo_texture = null
+		mesh_instance.material_override = material
+	material.roughness = 1.0
+	material.albedo_color = _Color
+	material.albedo_texture = Polytoria.get_material(_Material)
+	mesh_instance.transparency = 1 - _Color.a
 	material.uv1_scale = Vector3(0.5,0.5,0.5)
 	material.uv1_triplanar = true
 	material.uv1_world_triplanar = true
 
 func set_shape():
-	match Shape:
-		Polytoria.PartShape.Brick:
-			mesh_instance.mesh = BoxMesh.new()
-		Polytoria.PartShape.Ball:
-			mesh_instance.mesh = SphereMesh.new()
-		Polytoria.PartShape.Cylinder:
-			mesh_instance.mesh = CylinderMesh.new()
-			mesh_instance.mesh.height = 1.0
-		Polytoria.PartShape.Wedge:
-			mesh_instance.mesh = PrismMesh.new()
-			mesh_instance.mesh.left_to_right = 1.0
-		Polytoria.PartShape.Cone:
-			mesh_instance.mesh = CylinderMesh.new()
-			mesh_instance.mesh.top_radius = 0.0
-			mesh_instance.mesh.height = 1.0
-	if mesh_instance.mesh != null and material != null :
-		mesh_instance.mesh.material = material
+	mesh_instance.mesh = Polytoria.get_part_shape(Shape)
 
 func _exit_tree() -> void:
 	set_notify_transform(false)

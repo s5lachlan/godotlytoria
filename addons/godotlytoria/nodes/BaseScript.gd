@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/BaseScript.svg")
+@icon("res://addons/godotlytoria/textures/icons/BaseScript.svg")
 extends PolyInstance
 class_name PolyBaseScript
 

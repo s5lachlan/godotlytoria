@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/DynamicInstance.svg")
+@icon("res://addons/godotlytoria/textures/icons/DynamicInstance.svg")
 extends PolyInstance
 class_name PolyDynamicInstance
 
@@ -45,11 +45,11 @@ func _set_my_size(value : Vector3):
 	
 func _set_rotation(value):
 	if !is_inside_tree(): return
-	var godot_value = Vector3(value.x, -value.y, value.z)
+	var godot_value = Vector3(-value.x, -value.y, value.z)
 	global_rotation_degrees = godot_value
 	
 func _set_local_rotation(value):
-	var godot_value = Vector3(value.x, -value.y, value.z)
+	var godot_value = Vector3(-value.x, -value.y, value.z)
 	rotation_degrees = godot_value
 	
 func _set_local_my_size(value : Vector3):
@@ -65,7 +65,7 @@ func _get_local_position():
 	return unity_value
 	
 func _get_local_rotation():
-	var unity_value = Vector3(rotation_degrees.x, -rotation_degrees.y, rotation_degrees.z)
+	var unity_value = Vector3(-rotation_degrees.x, -rotation_degrees.y, rotation_degrees.z)
 	return unity_value
 	
 func _get_local_my_size() -> Vector3:
@@ -86,5 +86,5 @@ func _get_my_size():
 	
 func _get_rotation():
 	#if !is_inside_tree(): return
-	var unity_value = Vector3(global_rotation_degrees.x, -global_rotation_degrees.y, global_rotation_degrees.z)
+	var unity_value = Vector3(-global_rotation_degrees.x, -global_rotation_degrees.y, global_rotation_degrees.z)
 	return unity_value

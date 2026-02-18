@@ -1,4 +1,4 @@
-@icon("res://addons/godotlytoria/textures/Truss.svg")
+@icon("res://addons/godotlytoria/textures/icons/Truss.svg")
 @tool
 
 extends PolyClimbable

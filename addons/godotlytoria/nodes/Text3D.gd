@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Text3D.svg")
+@icon("res://addons/godotlytoria/textures/icons/Text3D.svg")
 extends PolyDynamicInstance
 class_name PolyText3D
 
@@ -23,22 +23,27 @@ var label3D : Label3D = Label3D.new()
 		FaceCamera = value
 		label3D.billboard = BaseMaterial3D.BILLBOARD_ENABLED if value else BaseMaterial3D.BILLBOARD_DISABLED
 ## Specifies the font of the text (using the TextFontPreset enum)
-@export var _Font: Polytoria.TextFontPreset
+@export var _Font: Polytoria.TextFontPreset:
+	set(value):
+		_Font = value
+		label3D.font = Polytoria.get_font(_Font)
 ## Specifies the size of the font.
 @export var FontSize: float = 36:
 	set(value):
 		FontSize = value
 		label3D.font_size = value
+# TODO: fix this its bugged vert alignemnt was 512 for some reason
 ## Specifies the horizontal alignment of the text.
 @export var _HorizontalAlignment: HorizontalAlignment:
 	set(value):
 		_HorizontalAlignment = value
-		label3D.horizontal_alignment = value
+		#label3D.horizontal_alignment = value
+# TODO: fix this its bugged vert alignemnt was 512 for some reason
 ## Specifies the vertical alignment of the text.
 @export var _VerticalAlignment: VerticalAlignment:
 	set(value):
 		_VerticalAlignment = value
-		label3D.vertical_alignment = value
+		#label3D.vertical_alignment = value
 
 func _enter_tree() -> void:
 	if label3D == null:
@@ -47,12 +52,10 @@ func _enter_tree() -> void:
 	label3D.text = Text
 	label3D.modulate = _Color
 	label3D.outline_size = 0
-	# TODO: add fonts
-	#label3D.font = ...
+	label3D.font = Polytoria.get_font(_Font)
 	label3D.font_size = FontSize
-	label3D.horizontal_alignment = _HorizontalAlignment
-	label3D.vertical_alignment = _VerticalAlignment
-	label3D.font = load("res://addons/godotlytoria/fonts/SourceSans3-Regular.ttf")
+	#label3D.horizontal_alignment = _HorizontalAlignment
+	#label3D.vertical_alignment = _VerticalAlignment
 	label3D.billboard = BaseMaterial3D.BILLBOARD_ENABLED if FaceCamera else BaseMaterial3D.BILLBOARD_DISABLED
 	add_child(label3D)
 	label3D.owner = self

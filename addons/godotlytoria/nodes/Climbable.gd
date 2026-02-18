@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Climbable.svg")
+@icon("res://addons/godotlytoria/textures/icons/Climbable.svg")
 
 extends PolyPart
 class_name PolyClimbable

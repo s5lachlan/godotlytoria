@@ -10,6 +10,9 @@ const DefaultLinuxPolyClientLocation = ".var/app/com.polytoria.launcher/config/P
 const DefaultLinuxPolyCreatorLocation = ".var/app/com.polytoria.launcher/config/Polytoria/Creator/" + CreatorVersion + "/Polytoria Creator.x86_64"
 const DefaultWindowsPolyClientLocation = "%appdata%\\Polytoria\\Client\\" + ClientVersion + "\\Polytoria Client.exe"
 const DefaultWindowsPolyCreatorLocation = "%appdata%\\Polytoria\\Creator\\" + CreatorVersion + "\\Polytoria Creator.exe"
+const FontPath = "res://addons/godotlytoria/fonts/"
+const MaterialPath = "res://addons/godotlytoria/textures/materials/"
+const ModelPath = "res://addons/godotlytoria/models/"
 
 func APIGetMesh(id: String) -> String:
 	return "https://api.polytoria.com/v1/assets/serve-mesh/%s" % [id]
@@ -85,6 +88,9 @@ enum PartMaterial {
 	Marble
 }
 
+func get_material(material: PartMaterial):
+	return load(MaterialPath + PartMaterial.keys()[material].to_lower() + "/albedo.png")
+
 enum PartShape {
 	Brick,
 	Ball,
@@ -97,6 +103,9 @@ enum PartShape {
 	Cone,
 	CornerWedge
 }
+
+func get_part_shape(shape: PartShape):
+	return load(ModelPath + PartShape.keys()[shape].to_lower() + ".obj")
 
 enum ParticleColorMode {
 	Multiply,
@@ -167,6 +176,9 @@ enum TextFontPreset {
 	Papyrus,
 	ComicSansMS
 }
+
+func get_font(font: TextFontPreset):
+	return load(FontPath + TextFontPreset.keys()[font].to_lower() + ".ttf")
 
 enum TextJustify {
 	Left,

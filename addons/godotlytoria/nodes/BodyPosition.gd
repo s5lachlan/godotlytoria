@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/BodyPosition.svg")
+@icon("res://addons/godotlytoria/textures/icons/BodyPosition.svg")
 
 extends PolyInstance
 class_name PolyBodyPosition

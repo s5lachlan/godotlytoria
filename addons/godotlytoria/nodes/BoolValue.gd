@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/BoolValue.svg")
+@icon("res://addons/godotlytoria/textures/icons/BoolValue.svg")
 extends PolyValueBase
 class_name PolyBoolValue
 

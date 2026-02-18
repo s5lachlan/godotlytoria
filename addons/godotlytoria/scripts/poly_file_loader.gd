@@ -43,6 +43,9 @@ static func instantiate_class(name):
 
 func _load(path: String, original_path: String, use_sub_threads: bool, cache_mode: int) -> Variant:
 	print("[Polytoria] Loading ", path)
+	if !FileAccess.file_exists(path):
+		print("[Polytoria] Error, place could not be found.")
+		return
 	var root = PolyGame.new()
 	var scene = PackedScene.new()
 	var xml = XML.parse_file(path)

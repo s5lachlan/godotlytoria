@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Game.svg")
+@icon("res://addons/godotlytoria/textures/icons/Game.svg")
 extends PolyInstance
 ## Game is the root object in the Polytoria instance tree. It is the object from which everything is descended.
 ## @tutorial: https://docs.polytoria.com/objects/game/Game/
@@ -19,6 +19,7 @@ signal Rendered(deltaTime: float)
 
 func _enter_tree() -> void:
 	self.name = "Game"
+	self.Name = "Game"
 	var _have = []
 	var _expected = [
 		"Environment",

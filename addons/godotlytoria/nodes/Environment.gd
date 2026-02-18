@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Environment.svg")
+@icon("res://addons/godotlytoria/textures/icons/Environment.svg")
 extends PolyInstance
 ## Environment is the primary object intended for storing active objects in the place.
 ##
@@ -7,6 +7,9 @@ extends PolyInstance
 ##[color=medium_purple]This object is automatically created by Polytoria. Additionally, scripts cannot change its parent.[br]
 ##[/color]
 class_name PolyEnvironment
+
+# TODO: Add all the skyboxes 
+var worldEnvironment: WorldEnvironment = WorldEnvironment.new()
 
 @export var AutoGenerateNavMesh: bool
 @export var FogColor: Color
@@ -23,3 +26,12 @@ class_name PolyEnvironment
 func CreateExplosion(): pass
 func OverlapBox() -> Array[PolyInstance]: return []
 func OverlapSphere() -> Array[PolyInstance]: return []
+
+func _enter_tree() -> void:
+	if worldEnvironment == null:
+		worldEnvironment = WorldEnvironment.new()
+	worldEnvironment.environment = load("res://addons/godotlytoria/skyboxes/day1.tres")
+	add_child(worldEnvironment)
+
+func _exit_tree() -> void:
+	remove_child(worldEnvironment)

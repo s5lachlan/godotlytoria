@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Hidden.svg")
+@icon("res://addons/godotlytoria/textures/icons/Hidden.svg")
 extends PolyInstance
 class_name PolyServerHidden
 

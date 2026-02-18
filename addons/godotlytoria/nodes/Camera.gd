@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Camera.svg")
+@icon("res://addons/godotlytoria/textures/icons/Camera.svg")
 extends PolyDynamicInstance
 ## Camera is a class that represents the local player's camera.
 ##

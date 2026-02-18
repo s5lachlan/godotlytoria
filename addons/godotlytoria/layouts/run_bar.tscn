@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbiyg0k5et1dy"]
 
-[ext_resource type="Texture2D" uid="uid://i4er772kx3fj" path="res://addons/godotlytoria/textures/creator.png" id="1_wti8r"]
-[ext_resource type="Texture2D" uid="uid://dwyw0cfepngvn" path="res://addons/godotlytoria/textures/client.png" id="1_y2p7r"]
+[ext_resource type="Texture2D" uid="uid://i4er772kx3fj" path="res://addons/godotlytoria/textures/icons/creator.png" id="1_wti8r"]
+[ext_resource type="Texture2D" uid="uid://dwyw0cfepngvn" path="res://addons/godotlytoria/textures/icons/client.png" id="1_y2p7r"]
 
 [node name="RunBar" type="HBoxContainer"]
 anchors_preset = 15
@@ -31,7 +31,7 @@ oversampling_override = 1.0
 title = "Open a File"
 initial_position = 1
 size = Vector2i(988, 545)
-ok_button_text = "Run FIle"
+ok_button_text = "Run File"
 dialog_hide_on_ok = true
 file_mode = 0
 filters = PackedStringArray("*.poly;Polytoria")

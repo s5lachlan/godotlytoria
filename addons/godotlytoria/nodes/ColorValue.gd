@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/ColorValue.svg")
+@icon("res://addons/godotlytoria/textures/icons/ColorValue.svg")
 extends PolyValueBase
 class_name PolyColorValue
 

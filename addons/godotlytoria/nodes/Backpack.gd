@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Backpack.svg")
+@icon("res://addons/godotlytoria/textures/icons/Backpack.svg")
 extends PolyInstance
 ## Backpack is a child of player used for storing tools.
 ##

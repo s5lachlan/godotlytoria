@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/godotlytoria/textures/Seat.svg")
+@icon("res://addons/godotlytoria/textures/icons/Seat.svg")
 extends PolyPart
 class_name PolySeat
 
