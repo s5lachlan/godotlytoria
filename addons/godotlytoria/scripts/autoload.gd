@@ -15,6 +15,17 @@ const MaterialPath = "res://addons/godotlytoria/textures/materials/"
 const ModelPath = "res://addons/godotlytoria/models/"
 const SkyboxPath = "res://addons/godotlytoria/skyboxes/"
 
+const RootNodes = [
+		"Environment",
+		"Lighting",
+		"Players",
+		"ScriptService",
+		"Hidden",
+		"ServerHidden",
+		"PlayerDefaults",
+		"PlayerGUI"
+	]
+
 func APIGetMesh(id: String) -> String:
 	return "https://api.polytoria.com/v1/assets/serve-mesh/%s" % [id]
 func APIGetAudio(id: String) -> String:

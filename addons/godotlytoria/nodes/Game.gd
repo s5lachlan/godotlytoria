@@ -21,17 +21,7 @@ func _enter_tree() -> void:
 	self.name = "Game"
 	self.Name = "Game"
 	var _have = []
-	var _expected = [
-		"Environment",
-		"Lighting",
-		"Players",
-		"ScriptService",
-		"Hidden",
-		"ServerHidden",
-		"PlayerDefaults",
-		"PlayerGUI"
-	]
-	for i in _expected:
+	for i in Polytoria.RootNodes:
 		if get_node_or_null(i) == null:
 			print("[Polytoria] Adding "+ i, " to game.")
 			var node = PolyFileLoader.instantiate_class("Poly" + i)

@@ -24,6 +24,11 @@ func _notification(what: int) -> void:
 		entered = true
 	if what == NOTIFICATION_EXIT_WORLD:
 		entered = false
+	if what == NOTIFICATION_PARENTED and get_script().get_global_name().trim_prefix("Poly") in Polytoria.RootNodes:
+		if get_parent().name != "Game":
+			push_error("[Polytoria] Godotlytoria has detected that you may have moved an essential root node, named: ",
+		name, " and reparented it to something else. If this node is not a child of \"Game\" then your place will not load.")
+		
 
 func set_default_name():
 	if Name == null or Name == "": 

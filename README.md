@@ -51,8 +51,7 @@ TODO:
 - GradientSky [Not added yet]
 - ImageSky [Not added yet]
 - Particles [Not added yet]
-- PointLight [Not added yet]
-- SpotLight [Not added yet]
+
 - GUI [Not added yet]
 - UIButton [Not added yet]
 - UIField [Not added yet]

@@ -125,6 +125,9 @@ func xml_properties(properties):
 					"Color": 
 						properties[i] = Color.WHITE
 						function = xml_color
+					"Range":
+						properties[i] = 60.0
+						function = xml_float
 					_: print("Error, cannot find variant: ",properties)
 		string += (function.call(i,properties[i]) + "\n").indent("  ")
 	return "<Properties>\n%s</Properties>" % [string]

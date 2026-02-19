@@ -40,3 +40,4 @@ func _disable_plugin() -> void:
 	remove_node_3d_gizmo_plugin(partGizmo)
 	pluginEnabled = false
 	print("[Polytoria] Plugin stopped")
+	
