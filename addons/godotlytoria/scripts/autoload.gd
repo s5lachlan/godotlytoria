@@ -6,12 +6,12 @@ var PolyClientLocationOverride = ""
 var PolyCreatorLocationOverride = ""
 var UserHome = ""
 var ExecutableType = ""
+const CreatorVersion = "1.4.154"
 
 const ClientBinary = "Polytoria Client"
 const CreatorBinary = "Polytoria Creator"
 const LinuxExecutable = ".x86_64"
 const WindowsExecutable = ".exe"
-const ClientVersion = "1.4.155"
 
 var DefaultClientFolder = ""
 var DefaultCreatorFolder = ""

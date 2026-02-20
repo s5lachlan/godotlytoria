@@ -5,15 +5,6 @@
 class_name PolyFileSaver
 extends ResourceFormatSaver
 
-const gameFile = """<?xml version="1.0" encoding="UTF-8"?>
-<game version="%s">%s
-</game>"""
-
-const modelFile = """<?xml version="1.0" encoding="UTF-8"?>
-<model version="%s">%s
-</model>"""
-
-
 # Only handle PackedScene resources.
 func _recognize(resource: Resource) -> bool:
 	return resource is PackedScene
@@ -82,7 +73,7 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 			nodexml = nodexml.indent("  ".repeat(current_node_depth))
 		xml += nodexml
 		
-	final_file = final_file % [str(Polytoria.ClientVersion),xml.indent("  ")]
+	final_file = final_file % [str(Polytoria.CreatorVersion),xml.indent("  ")]
 	var file = FileAccess.open(path,FileAccess.WRITE)
 	print("[Polytoria] Saving to ", path)
 	file.store_string(final_file)
