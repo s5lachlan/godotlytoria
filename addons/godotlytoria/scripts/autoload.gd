@@ -1,6 +1,7 @@
 @tool
 extends EditorPlugin
 
+
 var PolyClientLocationOverride = ""
 var PolyCreatorLocationOverride = ""
 var UserHome = ""
@@ -10,6 +11,7 @@ const ClientBinary = "Polytoria Client"
 const CreatorBinary = "Polytoria Creator"
 const LinuxExecutable = ".x86_64"
 const WindowsExecutable = ".exe"
+const ClientVersion = "1.4.155"
 
 var DefaultClientFolder = ""
 var DefaultCreatorFolder = ""

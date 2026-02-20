@@ -5,6 +5,15 @@
 class_name PolyFileSaver
 extends ResourceFormatSaver
 
+const gameFile = """<?xml version="1.0" encoding="UTF-8"?>
+<game version="%s">%s
+</game>"""
+
+const modelFile = """<?xml version="1.0" encoding="UTF-8"?>
+<model version="%s">%s
+</model>"""
+
+
 # Only handle PackedScene resources.
 func _recognize(resource: Resource) -> bool:
 	return resource is PackedScene
