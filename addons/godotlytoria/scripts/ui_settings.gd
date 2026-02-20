@@ -5,13 +5,13 @@ var settings_tab = preload("res://addons/godotlytoria/layouts/settings.tscn").in
 
 func set_settings():
 	if ProjectSettings.get_setting("addons/polytoria/client_location"):
-		Polytoria.PolyClientLocation = ProjectSettings.get_setting("addons/polytoria/client_location")
+		Polytoria.PolyClientLocationOverride = ProjectSettings.get_setting("addons/polytoria/client_location")
 	if ProjectSettings.get_setting("addons/polytoria/creator_location"):
-		Polytoria.PolyCreatorLocation = ProjectSettings.get_setting("addons/polytoria/creator_location")
+		Polytoria.PolyCreatorLocationOverride = ProjectSettings.get_setting("addons/polytoria/creator_location")
 
 func update_settings():
-	ProjectSettings.set_setting("addons/polytoria/client_location",Polytoria.PolyClientLocation)
-	ProjectSettings.set_setting("addons/polytoria/creator_location",Polytoria.PolyCreatorLocation)
+	ProjectSettings.set_setting("addons/polytoria/client_location",Polytoria.PolyClientLocationOverride)
+	ProjectSettings.set_setting("addons/polytoria/creator_location",Polytoria.PolyCreatorLocationOverride)
 
 func _enter_tree() -> void: 
 	set_settings()
@@ -19,7 +19,6 @@ func _enter_tree() -> void:
 		if i.name in Polytoria:
 			if i is LineEdit:
 				i.text = Polytoria.get(i.name)
-				i.placeholder_text = Polytoria.get(i.name)
 				i.connect("text_changed",
 				func(new_text):
 					Polytoria.set(i.name,new_text)

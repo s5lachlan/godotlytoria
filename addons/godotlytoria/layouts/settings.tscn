@@ -11,23 +11,25 @@ columns = 2
 [node name="LabelPolyClientLoc" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Path required to run the Polytoria Client to test games."
+tooltip_text = "Path required to run the Polytoria Client to test games.
+This is blank by default, only override this if Godotlytoria cannot find the client binary and you need to set it yourself."
 mouse_filter = 0
-text = "Polytoria Client Location "
+text = "Polytoria Client Location"
 
 [node name="PolyClientLocation" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "~/.var/app/com.polytoria.launcher/config/Polytoria/Client/1.4.152/Polytoria Client.x86_64"
+placeholder_text = "Leave blank to automatically find the client"
 
 [node name="LabelPolyCreatorLoc" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Path required to run the Polytoria Creator to edit games, in case a feature is currently unsupported."
+tooltip_text = "Path required to run the Polytoria Creator to edit games, in case a feature is currently unsupported.
+This is blank by default, only override this if Godotlytoria cannot find the client binary and you need to set it yourself."
 mouse_filter = 0
-text = "Polytoria Creator Location "
+text = "Polytoria Creator Location"
 
 [node name="PolyCreatorLocation" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "~/.var/app/com.polytoria.launcher/config/Polytoria/Creator/1.4.152/Polytoria Creator.x86_64"
+placeholder_text = "Leave blank to automatically find the creator"

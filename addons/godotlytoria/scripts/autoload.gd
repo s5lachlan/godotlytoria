@@ -1,15 +1,23 @@
 @tool
 extends EditorPlugin
 
-var PolyClientLocation = ".var/app/com.polytoria.launcher/config/Polytoria/Client/" + ClientVersion + "/Polytoria Client.x86_64"
-var PolyCreatorLocation = ".var/app/com.polytoria.launcher/config/Polytoria/Creator/" + CreatorVersion + "/Polytoria Creator.x86_64"
+var PolyClientLocationOverride = ""
+var PolyCreatorLocationOverride = ""
 var UserHome = ""
-const CreatorVersion = "1.4.154"
-const ClientVersion = "1.4.155"
-const DefaultLinuxPolyClientLocation = ".var/app/com.polytoria.launcher/config/Polytoria/Client/" + ClientVersion + "/Polytoria Client.x86_64"
-const DefaultLinuxPolyCreatorLocation = ".var/app/com.polytoria.launcher/config/Polytoria/Creator/" + CreatorVersion + "/Polytoria Creator.x86_64"
-const DefaultWindowsPolyClientLocation = "%appdata%\\Polytoria\\Client\\" + ClientVersion + "\\Polytoria Client.exe"
-const DefaultWindowsPolyCreatorLocation = "%appdata%\\Polytoria\\Creator\\" + CreatorVersion + "\\Polytoria Creator.exe"
+var ExecutableType = ""
+
+const ClientBinary = "Polytoria Client"
+const CreatorBinary = "Polytoria Creator"
+const LinuxExecutable = ".x86_64"
+const WindowsExecutable = ".exe"
+
+var DefaultClientFolder = ""
+var DefaultCreatorFolder = ""
+const DefaultLinuxPolyClientFolder = ".var/app/com.polytoria.launcher/config/Polytoria/Client/"
+const DefaultLinuxPolyCreatorFolder = ".var/app/com.polytoria.launcher/config/Polytoria/Creator/"
+const DefaultWindowsPolyClientFolder = "%appdata%\\Polytoria\\Client\\"
+const DefaultWindowsPolyCreatorFolder = "%appdata%\\Polytoria\\Creator\\"
+
 const FontPath = "res://addons/godotlytoria/fonts/"
 const MaterialPath = "res://addons/godotlytoria/textures/materials/"
 const ModelPath = "res://addons/godotlytoria/models/"
@@ -254,30 +262,58 @@ func _enter_tree() -> void:
 	match OS.get_name():
 		"Linux":
 			UserHome = OS.get_environment("HOME")
+			ExecutableType = LinuxExecutable
 			if UserHome == "": 
 				push_error("User's home is an empty string or doesn't exist.")
 				return
-			PolyClientLocation = UserHome + "/" + DefaultLinuxPolyClientLocation
-			PolyCreatorLocation = UserHome + "/" + DefaultLinuxPolyCreatorLocation
+			DefaultClientFolder = correct_path(UserHome) + DefaultLinuxPolyClientFolder
+			DefaultCreatorFolder = correct_path(UserHome) + DefaultLinuxPolyCreatorFolder
 		"Windows":
 			UserHome = OS.get_environment("USERPROFILE")
+			ExecutableType = WindowsExecutable
 			if UserHome == "": 
 				push_error("User's home is an empty string or doesn't exist.")
 				return
-			PolyClientLocation = DefaultWindowsPolyClientLocation
-			PolyCreatorLocation = DefaultWindowsPolyCreatorLocation
+			DefaultClientFolder = correct_path(UserHome) + DefaultWindowsPolyClientFolder
+			DefaultCreatorFolder = correct_path(UserHome) + DefaultWindowsPolyCreatorFolder
 	
+# Polytoria binaries come in folders labeled with version numbers.
+# This function's purpose is to scan all folders inside of Client/ and get the executable.
+func scan_versions(folder,file_to_find):
+	for version in DirAccess.get_directories_at(correct_path(folder,UserHome)):
+		var expectedFile = correct_path(folder,UserHome) + correct_path(version) + file_to_find
+		if FileAccess.file_exists(expectedFile):
+			print("[Polytoria] Located ",file_to_find, " at: ", expectedFile)
+			return expectedFile
+	push_error("[Polytoria] Cannot find " + file_to_find)
+	return
+
+# This function corrects the path by appending a required prefix and appending the required suffix
+func correct_path(path: String, prefix = ""):
+	if prefix != "":
+		if !path.begins_with(prefix):
+			path = prefix + path
+	if !path.ends_with("/"):
+		return path + "/"
+	else:
+		return path
 
 func run_client(path : String):
+	var clientLocation = scan_versions(DefaultClientFolder,ClientBinary + ExecutableType)
+	if PolyClientLocationOverride != "":
+		clientLocation = correct_path(PolyClientLocationOverride,UserHome)
 	print("[Polytoria] Running " + ProjectSettings.globalize_path(path))
-	print("[Polytoria] Executed " + PolyClientLocation)
+	print("[Polytoria] Executed " + clientLocation)
 	print("[Polytoria] Running Client in Offline Mode")
 	if !path.ends_with(".poly"):
 		print("[Polytoria] Cannot run a non .poly file")
 		return
-	OS.create_process(PolyClientLocation,["-solo",ProjectSettings.globalize_path(path)])
+	OS.create_process(clientLocation,["-solo",ProjectSettings.globalize_path(path)])
 	
 func run_creator():
-	print("[Polytoria] Executed " + PolyCreatorLocation)
+	var creatorLocation = scan_versions(DefaultCreatorFolder,CreatorBinary + ExecutableType)
+	if PolyCreatorLocationOverride != "":
+		creatorLocation = correct_path(PolyCreatorLocationOverride,UserHome)
+	print("[Polytoria] Executed " + creatorLocation)
 	print("[Polytoria] Running Creator in Offline Mode")
-	OS.create_process(PolyCreatorLocation,["-token","0"])
+	OS.create_process(creatorLocation,["-token","0"])
