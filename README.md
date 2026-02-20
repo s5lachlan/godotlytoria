@@ -42,6 +42,10 @@ Sound files have a download button and a path argument. Insert an ID, click down
 - [ ] Custom tools to make life easier, e.g a Tool Creator, templates for things
 - [ ] Implement Toolbox
 - [ ] Implement fetching Polytoria asset IDs
+### Wacky ideas:
+Not likely to add any time soon but possible
+- [ ] Image to Polytoria Model..?
+- [ ] Polytoria binary format
 
 TODO:
 
