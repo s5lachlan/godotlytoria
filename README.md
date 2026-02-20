@@ -49,23 +49,23 @@ Not likely to add any time soon but possible
 
 TODO:
 
-- MeshPart [Not added yet]
-- NPC [Not added yet]
-- Decal [Not added yet]
-- GradientSky [Not added yet]
-- ImageSky [Not added yet]
-- Particles [Not added yet]
+- [ ] MeshPart [Not added yet]
+- [ ] NPC [Not added yet]
+- [ ] Decal [Not added yet]
+- [ ] GradientSky [Not added yet]
+- [ ] ImageSky [Not added yet]
+- [ ] Particles [Not added yet]
 
-- GUI [Not added yet]
-- UIButton [Not added yet]
-- UIField [Not added yet]
-- UIHVLayout [Not added yet]
-- UIHorizontalLayout [Not added yet]
-- UIImage [Not added yet]
-- UILabel [Not added yet]
-- UITextInput [Not added yet]
-- UIVerticalLayout [Not added yet]
-- UIView [Not added yet]
+- [ ] GUI [Not added yet]
+- [ ] UIButton [Not added yet]
+- [ ] UIField [Not added yet]
+- [ ] UIHVLayout [Not added yet]
+- [ ] UIHorizontalLayout [Not added yet]
+- [ ] UIImage [Not added yet]
+- [ ] UILabel [Not added yet]
+- [ ] UITextInput [Not added yet]
+- [ ] UIVerticalLayout [Not added yet]
+- [ ] UIView [Not added yet]
 
 Likely to not support the following
 - Publishing directly to Polytoria
