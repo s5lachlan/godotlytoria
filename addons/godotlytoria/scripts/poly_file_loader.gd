@@ -110,6 +110,8 @@ func prop_to_dict(properties):
 				dict[i.attributes.name] = Color(float(i.R.content), float(i.G.content), float(i.B.content), float(i.A.content))
 			"vector3":
 				dict[i.attributes.name] = Vector3(float(i.X.content), float(i.Y.content), float(i.Z.content))
+			"vector2":
+				dict[i.attributes.name] = Vector2(float(i.X.content), float(i.Y.content))
 			_:
 				print("What is... ", i.name, "?")
 				dict[i.attributes.name] = i.content

@@ -60,11 +60,18 @@ func _save(resource: Resource, path: String, flags: int) -> Error:
 		var hasChildren = (next_node_depth != current_node_depth)
 		var ascendingTree = (next_node_depth < current_node_depth)
 		var escaped = (last_node_depth > current_node_depth)
-
+		
+		# Ensures that tags escape or closed properly on nested nodes.
 		if escaped: nodexml += "\n</Item>".repeat(last_node_depth - current_node_depth)
 		nodexml += '\n<Item class="%s">\n' % [node_class]
 		
 		nodexml += xml_properties(nodeProperties).indent("  ")
+		
+		# Edge case ensures that trailing nodes at the end of the tree,
+		# no matter their depth, close properly.
+		if node == state.get_node_count() - 1 and current_node_depth > 1:
+			nodexml += "\n</Item>".repeat(current_node_depth - 1)
+			
 		if !hasChildren:
 			nodexml += "\n</Item>"
 		if ascendingTree:
@@ -119,6 +126,7 @@ func xml_properties(properties):
 			TYPE_BOOL: function = xml_boolean
 			TYPE_COLOR: function = xml_color
 			TYPE_VECTOR3: function = xml_vector3
+			TYPE_VECTOR2: function = xml_vector2
 			_: 
 				# Stupid hack because the default value of colour is null for some reason
 				match i:
@@ -164,3 +172,10 @@ func xml_vector3(name: String,vector: Vector3):
   <Z>%s</Z>
 </vector3>"""
 	return string % [name,str(vector.x),str(vector.y),str(vector.z)]
+	
+func xml_vector2(name: String,vector: Vector2):
+	var string = """<vector2 name="%s">
+  <X>%s</X>
+  <Y>%s</Y>
+</vector2>"""
+	return string % [name,str(vector.x),str(vector.y)]
