@@ -49,6 +49,8 @@ Not likely to add any time soon but possible
 
 TODO:
 
+Not implemented means it's editable and accessible but has no Godot function.
+
 - [ ] MeshPart [Not added yet]
 - [ ] NPC [Not added yet]
 - [ ] Decal [Not added yet]
@@ -56,16 +58,16 @@ TODO:
 - [ ] ImageSky [Not added yet]
 - [ ] Particles [Not added yet]
 
-- [ ] GUI [Not added yet]
-- [ ] UIButton [Not added yet]
-- [ ] UIField [Not added yet]
-- [ ] UIHVLayout [Not added yet]
-- [ ] UIHorizontalLayout [Not added yet]
-- [ ] UIImage [Not added yet]
-- [ ] UILabel [Not added yet]
 - [ ] UITextInput [Not added yet]
 - [ ] UIVerticalLayout [Not added yet]
-- [ ] UIView [Not added yet]
+- [ ] UIHVLayout [Not added yet]
+- [ ] UIHorizontalLayout [Not added yet]
+- [X] GUI [Not implemented in editor yet]
+- [X] UIButton [Not implemented in editor yet]
+- [X] UIField [Not implemented in editor yet]
+- [X] UIImage [Not implemented in editor yet]
+- [X] UILabel [Not implemented in editor yet]
+- [X] UIView [Not implemented in editor yet]
 
 Likely to not support the following
 - Publishing directly to Polytoria
