@@ -3,7 +3,7 @@
 
 Godotlytoria is a [Polytoria](https://polytoria.com) Place Creator and Editor in the form of a Godot plugin for the Godot Editor. It allows you to make and edit Polytoria games using Godot. You can even use it in the browser.
 
-![](./screenshots/screenshot1.png)
+![](./screenshots/screenshot2.png)
 
 ## An alternative to the Creator.
 The current Polytoria Creator is lacking in features, has a very displeasing UI, not modifiable and not very servicable for use for a serious game editor. I created Godotlytoria in a very short timespan, about 3 to 4 days in total, utilizing Godot as the perfect base for a place editor. However, I cannot guarantee that there will be no issues. If you would like to contribute or report bugs, please do so. 
