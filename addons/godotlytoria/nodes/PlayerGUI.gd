@@ -4,4 +4,4 @@ extends PolyInstance
 class_name PolyPlayerGUI
 
 @export var Interactable = true
-@export var Opacity: float
+@export var Opacity: float = 1.0

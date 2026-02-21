@@ -3,6 +3,8 @@
 extends PolyUIView
 class_name PolyUILabel
 
+# TODO: Add Godot functionality.
+
 ## Whether the text should be automatically sized to fit the label's size.
 @export var AutoSize : bool
 ## The font of the label.

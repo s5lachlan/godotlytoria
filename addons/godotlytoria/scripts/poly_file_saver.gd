@@ -128,17 +128,13 @@ func xml_properties(properties):
 			TYPE_VECTOR3: function = xml_vector3
 			TYPE_VECTOR2: function = xml_vector2
 			_: 
-				# Stupid hack because the default value of colour is null for some reason
-				match i:
-					"Color": 
-						properties[i] = Color.WHITE
-						function = xml_color
-					"Range":
-						properties[i] = 60.0
-						function = xml_float
-					_: print("Error, cannot find variant: ",properties)
+				function = xml_null
+				push_warning("[Polytoria] ",i," in ",properties["Name"]," has been omitted because it returns ", properties[i], " which will be a default value in Polytoria.")
 		string += (function.call(i,properties[i]) + "\n").indent("  ")
 	return "<Properties>\n%s</Properties>" % [string]
+	
+func xml_null(name: String, nil: Variant):
+	return "<!-- %s omitted -->" % [str(name)]
 	
 func xml_boolean(name: String,boolean : bool):
 	var string = """<boolean name="%s">%s</boolean>"""

@@ -187,6 +187,18 @@ enum SkyboxPreset {
 func get_skybox(skybox: SkyboxPreset):
 	return load(SkyboxPath + SkyboxPreset.keys()[skybox].to_lower() + ".tres")
 
+enum TextAnchor {
+	UpperLeft,
+	UpperCenter,
+	UpperRight,
+	MiddleLeft,
+	MiddleCenter,
+	MiddleRight,
+	LowerLeft,
+	LowerCenter,
+	LowerRight,
+}
+
 enum TextFontPreset {
 	SourceSans,
 	PressStart2P,

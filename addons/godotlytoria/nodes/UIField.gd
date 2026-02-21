@@ -4,6 +4,8 @@
 extends PolyInstance
 class_name PolyUIField
 
+# TODO: Add Godot functionality.
+
 ## The pivot point of the UI element.
 @export var PivotPoint :Vector2 = Vector2(0.5, 0.5)
 ## The offset of the UI element in pixels.
@@ -17,6 +19,6 @@ class_name PolyUIField
 ## The size of the UI element relative to its parent.
 @export var SizeRelative: Vector2 = Vector2(1, 1)
 ## Determines whether the UI element is visible or not.
-@export var Visible: bool
+@export var Visible: bool = true
 ## Determines whether the UI element clips its descendants.
 @export var ClipDescendants: bool

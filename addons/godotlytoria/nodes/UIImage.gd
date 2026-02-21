@@ -3,6 +3,8 @@
 extends PolyUIField
 class_name PolyUIImage
 
+# TODO: Add Godot functionality.
+
 ## Specifies the color of the image.
 @export var _Color: Color
 ## Specifies the image ID of the UIImage.

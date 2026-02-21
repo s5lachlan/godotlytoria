@@ -49,25 +49,28 @@ Not likely to add any time soon but possible
 
 TODO:
 
-Not implemented means it's editable and accessible but has no Godot function.
+The following are added, but not implemented, meaning they have no visual Godot editing functionality currently, but can be edited directly.
 
-- [ ] MeshPart [Not added yet]
-- [ ] NPC [Not added yet]
-- [ ] Decal [Not added yet]
-- [ ] GradientSky [Not added yet]
-- [ ] ImageSky [Not added yet]
-- [ ] Particles [Not added yet]
+- [ ] MeshPart [Not implemented in editor yet]
+- [ ] NPC [Not implemented in editor yet]
+- [ ] Decal [Not implemented in editor yet]
+- [ ] GradientSky [Not implemented in editor yet]
+- [ ] ImageSky [Not implemented in editor yet]
+- [ ] ProceduralSky [Not implemented in editor yet]
+- [ ] UIVerticalLayout [Not implemented in editor yet]
+- [ ] UIHVLayout [Not implemented in editor yet]
+- [ ] UIHorizontalLayout [Not implemented in editor yet]
+- [ ] GUI [Not implemented in editor yet]
+- [ ] UIButton [Not implemented in editor yet]
+- [ ] UIField [Not implemented in editor yet]
+- [ ] UIImage [Not implemented in editor yet]
+- [ ] UILabel [Not implemented in editor yet]
+- [ ] UIView [Not implemented in editor yet]
+- [ ] UITextInput [Not implemented in editor yet]
 
-- [ ] UITextInput [Not added yet]
-- [ ] UIVerticalLayout [Not added yet]
-- [ ] UIHVLayout [Not added yet]
-- [ ] UIHorizontalLayout [Not added yet]
-- [X] GUI [Not implemented in editor yet]
-- [X] UIButton [Not implemented in editor yet]
-- [X] UIField [Not implemented in editor yet]
-- [X] UIImage [Not implemented in editor yet]
-- [X] UILabel [Not implemented in editor yet]
-- [X] UIView [Not implemented in editor yet]
+The following is not added yet due to color range and number range which I need to develop
+
+- [ ] Particles [Not added yet fully or implemented yet]
 
 Likely to not support the following
 - Publishing directly to Polytoria
